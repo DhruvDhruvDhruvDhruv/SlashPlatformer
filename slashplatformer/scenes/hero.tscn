@@ -1,7 +1,31 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtho4nqt4i38b"]
+[gd_scene load_steps=24 format=3 uid="uid://dtho4nqt4i38b"]
 
 [ext_resource type="Texture2D" uid="uid://ddo5cphjw5ajm" path="res://assets/spritesheets/herochar_spritesheet(new).png" id="1_fi7yh"]
 [ext_resource type="Script" path="res://scripts/hero.gd" id="1_xuixx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tella"]
+atlas = ExtResource("1_fi7yh")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syjig"]
+atlas = ExtResource("1_fi7yh")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o88wr"]
+atlas = ExtResource("1_fi7yh")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50hlp"]
+atlas = ExtResource("1_fi7yh")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5gip"]
+atlas = ExtResource("1_fi7yh")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0bdq"]
+atlas = ExtResource("1_fi7yh")
+region = Rect2(80, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4b8fs"]
 atlas = ExtResource("1_fi7yh")
@@ -59,6 +83,29 @@ region = Rect2(80, 16, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tella")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syjig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o88wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50hlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5gip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0bdq")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4b8fs")
 }, {
 "duration": 1.0,
@@ -86,7 +133,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,11 +172,21 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_s3yk0")
-animation = &"run"
+animation = &"dash"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.738835
+frame_progress = 0.348768
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 9)
 shape = SubResource("CapsuleShape2D_prvkx")
+
+[node name="coyote_timer" type="Timer" parent="."]
+wait_time = 0.11
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="coyote_timer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

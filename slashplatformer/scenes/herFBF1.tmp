@@ -187,6 +187,5 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
-[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="coyote_timer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="dash_end_timer" to="." method="_on_dash_timer_timeout"]

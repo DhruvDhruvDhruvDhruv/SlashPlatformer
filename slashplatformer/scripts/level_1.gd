@@ -2,7 +2,7 @@ extends Node2D
 
 enum SAVE_POINTS {INIT, POST_DASH, POST_SLIME}
 var save_vectors := [
-	Vector2(22.0, 70.0),
+	Vector2(22.0, 0),
 	Vector2(1412.0, -165.0),
 	Vector2(3000.0, 0.0)
 ]

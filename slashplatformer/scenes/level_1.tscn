@@ -347,10 +347,42 @@ normal = Vector2(-0.00613485, -0.999981)
 distance = -2.92019
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsfc7"]
-size = Vector2(66, 27)
+size = Vector2(280, 27)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_m384b")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -350)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, -350)
+scroll_limit_begin = Vector2(0, -360)
+scroll_limit_end = Vector2(0, -359)
+
+[node name="bg0" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(240, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/bg0"]
+texture = ExtResource("2_l7w1h")
+centered = false
+
+[node name="bg1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.15, 0.15)
+motion_mirroring = Vector2(240, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/bg1"]
+texture = ExtResource("3_n7xru")
+centered = false
+
+[node name="bg2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_offset = Vector2(0, 25)
+motion_mirroring = Vector2(240, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/bg2"]
+texture = ExtResource("4_jn6j2")
+centered = false
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -372,7 +404,7 @@ shape = SubResource("WorldBoundaryShape2D_857p2")
 [node name="Init Wall" type="CollisionShape2D" parent="StaticBody2D"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(-7.5, 30)
+position = Vector2(-7.49961, -77)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_nsfc7")
 
@@ -384,38 +416,6 @@ scale = Vector2(2, 2)
 visibility_layer = 2
 position = Vector2(63, 2)
 scale = Vector2(2, 2)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Hero"]
-offset = Vector2(0, -350)
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, -350)
-scroll_limit_begin = Vector2(0, -360)
-scroll_limit_end = Vector2(0, -359)
-
-[node name="bg0" type="ParallaxLayer" parent="Hero/ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(240, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Hero/ParallaxBackground/bg0"]
-texture = ExtResource("2_l7w1h")
-centered = false
-
-[node name="bg1" type="ParallaxLayer" parent="Hero/ParallaxBackground"]
-motion_scale = Vector2(0.15, 0.15)
-motion_mirroring = Vector2(240, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Hero/ParallaxBackground/bg1"]
-texture = ExtResource("3_n7xru")
-centered = false
-
-[node name="bg2" type="ParallaxLayer" parent="Hero/ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_offset = Vector2(0, 25)
-motion_mirroring = Vector2(240, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Hero/ParallaxBackground/bg2"]
-texture = ExtResource("4_jn6j2")
-centered = false
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 position = Vector2(6.5, 10.5)

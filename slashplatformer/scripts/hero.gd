@@ -20,7 +20,7 @@ var dashes := 1
 var curr_save_point := "INIT"
 
 func _on_ready() -> void:
-	pass # Replace with function body.
+	position = get_save_location_vector(curr_save_point)
 
 func _physics_process(delta: float) -> void:
 	# DEBUG STATEMENT
